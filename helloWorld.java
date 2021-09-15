@@ -9,3 +9,4 @@ class HelloWorld {
     }
 }
 
+/* This is a comment I want to test */
