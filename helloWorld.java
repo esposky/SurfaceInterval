@@ -6,6 +6,6 @@ class HelloWorld {
 
 class HelloWord_2 {
     public static void main(String[] args) {
-        System.out.println("Hello, To This World!");
+        System.out.println("Hello, To This Other Outer World!");
     }
 }
