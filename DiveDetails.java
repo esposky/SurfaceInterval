@@ -17,6 +17,7 @@ public class DiveDetails {
 	
 	//diveConditions and diveActivities would be provided from fixed selection lists that creates a string array to pass in
 	//setPressureGroup called automatically to attach pressure group assignment from NauiDiveTables
+	//1st constructor is for normal air mix, second constructor is for nitrox mix
 	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
 			int pressureEnd, String[] diveConditions, String[] diveActivities) {
 		setDuration(duration);
@@ -26,7 +27,7 @@ public class DiveDetails {
 		setVisibility(visibility);
 		setPressureStart(pressureStart);
 		setPressureEnd(pressureEnd);
-		setAirType(29);
+		setAirType(21);
 		setDiveConditions(diveConditions);
 		setDiveActivities(diveActivities);
 		setPressureGroup();
