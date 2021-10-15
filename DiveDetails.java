@@ -11,14 +11,29 @@ public class DiveDetails {
 	private int pressureStart;
 	private int pressureEnd;
 	private char pressureGroup;
-	private String airType;
+	private int airType;
 	private String[] diveConditions;
 	private String[] diveActivities;
 	
 	//diveConditions and diveActivities would be provided from fixed selection lists that creates a string array to pass in
 	//setPressureGroup called automatically to attach pressure group assignment from NauiDiveTables
 	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
-			int pressureEnd, String airType, String[] diveConditions, String[] diveActivities) {
+			int pressureEnd, String[] diveConditions, String[] diveActivities) {
+		setDuration(duration);
+		setMaxDepth(maxDepth);
+		setAvgDepth(avgDepth);
+		setTemp(temp);
+		setVisibility(visibility);
+		setPressureStart(pressureStart);
+		setPressureEnd(pressureEnd);
+		setAirType(29);
+		setDiveConditions(diveConditions);
+		setDiveActivities(diveActivities);
+		setPressureGroup();
+	}
+	
+	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
+			int pressureEnd, int airType, String[] diveConditions, String[] diveActivities) {
 		setDuration(duration);
 		setMaxDepth(maxDepth);
 		setAvgDepth(avgDepth);
@@ -120,12 +135,12 @@ public class DiveDetails {
 		this.pressureEnd = pressureEnd;
 	}
 	
-	public String getAirType() {
-		String temp = airType;
+	public int getAirType() {
+		int temp = airType;
 		return temp;
 	}
 	
-	private void setAirType(String airType) {
+	private void setAirType(int airType) {
 		this.airType = airType;
 	}
 	
