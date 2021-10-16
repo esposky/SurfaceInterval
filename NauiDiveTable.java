@@ -16,6 +16,13 @@ public class NauiDiveTable
 		pg = calcPostSIPG(pg, surfInt);
 	}
 	
+	//profile constructor for single dive after previous dive to accept pressure group
+	//(depth in feet, time in minutes, surface interval in minutes)
+	NauiDiveTable(char currPG, int depth, int time, int surfInt){
+		pg = calcPressureGroup(depth, time + calcResidualNitrogen(currPG, depth));
+		pg = calcPostSIPG(pg, surfInt);
+	}
+	
 	//profile constructor for 2 dive profile w/surface interval
 	//(depth1, time1, surface interval1, depth2, time2)
 	NauiDiveTable(int depth1, int time1, int surfInt, int depth2, int time2){
