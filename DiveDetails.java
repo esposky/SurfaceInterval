@@ -18,7 +18,7 @@ public class DiveDetails {
 	//diveConditions and diveActivities would be provided from fixed selection lists that creates a string array to pass in
 	//setPressureGroup called automatically to attach pressure group assignment from NauiDiveTables
 	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
-			int pressureEnd, String[] diveConditions, String[] diveActivities) {
+				int pressureEnd, String[] diveConditions, String[] diveActivities) {
 		setDuration(duration);
 		setMaxDepth(maxDepth);
 		setAvgDepth(avgDepth);
@@ -32,8 +32,9 @@ public class DiveDetails {
 		setPressureGroup();
 	}
 	
+	//Constructor for diving on Nitrox to capture air type percentage
 	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
-			int pressureEnd, int airType, String[] diveConditions, String[] diveActivities) {
+				int pressureEnd, int airType, String[] diveConditions, String[] diveActivities) {
 		setDuration(duration);
 		setMaxDepth(maxDepth);
 		setAvgDepth(avgDepth);
@@ -45,6 +46,38 @@ public class DiveDetails {
 		setDiveConditions(diveConditions);
 		setDiveActivities(diveActivities);
 		setPressureGroup();
+	}
+	
+	//Constructor for dive that occurs while user still has previous dive to account for nitrogen levels
+	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
+			int pressureEnd, char pg, String[] diveConditions, String[] diveActivities) {
+	setDuration(duration);
+	setMaxDepth(maxDepth);
+	setAvgDepth(avgDepth);
+	setTemp(temp);
+	setVisibility(visibility);
+	setPressureStart(pressureStart);
+	setPressureEnd(pressureEnd);
+	setAirType(21);
+	setDiveConditions(diveConditions);
+	setDiveActivities(diveActivities);
+	setPressureGroup(pg);
+	}
+	
+	//Constructor for dive that occurs while user still has previous dive to account for nitrogen levels and nitrox gas mix
+	DiveDetails(int duration, int maxDepth, int avgDepth, int temp, int visibility, int pressureStart,
+			int pressureEnd, char pg, int airType, String[] diveConditions, String[] diveActivities) {
+	setDuration(duration);
+	setMaxDepth(maxDepth);
+	setAvgDepth(avgDepth);
+	setTemp(temp);
+	setVisibility(visibility);
+	setPressureStart(pressureStart);
+	setPressureEnd(pressureEnd);
+	setAirType(airType);
+	setDiveConditions(diveConditions);
+	setDiveActivities(diveActivities);
+	setPressureGroup(pg);
 	}
 	
 	public String[] getDiveConditions() {
@@ -151,6 +184,10 @@ public class DiveDetails {
 
 	private void setPressureGroup() {
 		this.pressureGroup = new NauiDiveTable(NauiDiveTable.calcEAD(airType, maxDepth), duration, 0).getPG();
+	}
+	
+	private void setPressureGroup(char pg) {
+		this.pressureGroup = new NauiDiveTable(pg, NauiDiveTable.calcEAD(airType, maxDepth), duration, 0).getPG();
 	}
 
 	public String toString() {
