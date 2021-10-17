@@ -1,14 +1,12 @@
 package nauiTables;
-import java.awt.image.*;
 import java.io.*;
 
-import javax.imageio.ImageIO;
-
 public class CertCard {
-	private BufferedImage imgFront = null;
-	private BufferedImage imgBack = null;
+	private File imgFront = null;
+	private File imgBack = null;
 	private String type;
 	
+	//Constructor takes the file location/name of the front and back images of the card, and the type of card being saved
 	CertCard(String fileFront, String fileBack, String type){
 		setCard(fileFront, fileBack);
 		setType(type);
@@ -16,20 +14,23 @@ public class CertCard {
 	
 	private void setCard(String fileFront, String fileBack){
 		try {
-			imgFront = ImageIO.read(new File(fileFront));
-			imgBack = ImageIO.read(new File(fileBack));
+			imgFront = new File(fileFront);
+			imgBack = new File(fileBack);
+			if(!imgFront.exists()||!imgBack.exists())
+				throw new IOException("File read error, check file path/name");
 			System.out.println("File read successful");
 		}
-		catch(IOException e){
+		catch(IOException e) {
 			System.out.println(e.getMessage());
 		}
+		
 	}
 	
-	public BufferedImage getCardFront() {
+	public File getCardFront() {
 		return imgFront;
 	}
 	
-	public BufferedImage getCardBack() {
+	public File getCardBack() {
 		return imgBack;
 	}
 	
