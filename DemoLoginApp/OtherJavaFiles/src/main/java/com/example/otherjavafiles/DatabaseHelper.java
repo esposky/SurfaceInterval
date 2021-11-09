@@ -309,53 +309,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return returnList;
     }
 
-    // Start new log by adding location details
-
-    public boolean addNewLogLocation(LocationDetails locationDetails) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put(COLUMN_LOCATION, locationDetails.getLocation());
-        cv.put(COLUMN_DATE, locationDetails.getDate());
-        cv.put(COLUMN_SITENAME, locationDetails.getSiteName());
-
-        long insert = db.insert(DIVELOG_TABLE, null, cv);
-        if (insert == -1) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    } // end addNewLog
-
     // Use update? to maybe just update files from previous page?
     // Adds new log but only from second page
-    public boolean addLogFromLocation(DiveDetails diveDetails) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put(COLUMN_DURATION, diveDetails.getDuration());
-        cv.put(COLUMN_MAX_DEPTH, diveDetails.getMaxDepth());
-        cv.put(COLUMN_AVERAGE_DEPTH, diveDetails.getAvgDepth());
-        cv.put(COLUMN_TEMPERATURE, diveDetails.getTemp());
-        cv.put(COLUMN_VISIBILITY, diveDetails.getVisibility());
-        cv.put(COLUMN_PRESSURE_START, diveDetails.getPressureStart());
-        cv.put(COLUMN_PRESSURE_END, diveDetails.getPressureEnd());
-        cv.put(COLUMN_AIR_TYPE, diveDetails.getAirType());
-
-        // Activities and conditions are both arrays so that causes problems
-        // Will need to figure something out
-//        cv.put(COLUMN_DIVE_CONDITIONS, diveDetails.getDiveConditions());
-//        cv.put(COLUMN_DIVE_ACTIVITIES, diveDetails.getDiveActivities());
-
-        long insert = db.insert(DIVELOG_TABLE, null, cv);
-        if (insert == -1) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    } // end addNewLog
 
     // Update
     public boolean updateDiveLog(DiveDetails diveDetails) {
@@ -424,6 +379,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return ID;
+    }
+
+    // Gets wildlife from database and displays it in listview
+    public List<Equipment> getEquipment(String userID) {
+        List<Equipment> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM EQUIPMENT_TABLE WHERE USER_ID = " + userID;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            // loop through results and create new Equipment objects
+            do {
+                int equipmentID = cursor.getInt(0);
+                String userId = cursor.getString(1);
+                String gearType = cursor.getString(2);
+                String gearBrandMake = cursor.getString(3);
+                String gearModel = cursor.getString(4);
+                Boolean rented = cursor.getInt(5) == 1;
+                Double price = cursor.getDouble(6);
+
+                Equipment newEquipment = new Equipment(userId, equipmentID, gearType, gearBrandMake, gearModel, rented, price);
+                returnList.add(newEquipment);
+
+            } while (cursor.moveToNext());
+        }
+        else {
+            // failure do not add anything
+        }
+        // close both the cursor and the db when done
+        cursor.close();
+        db.close();
+        return returnList;
+
     }
 
     // Delete and Equipment from the database
@@ -500,6 +489,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
         db.close();
         return ID;
+    }
+
+    public List<WildLife> getWildlife(String userID) {
+        List<WildLife> returnList = new ArrayList<>();
+        String queryString = "SELECT * FROM WILDLIFE_TABLE WHERE USER_ID = " + userID;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            // loop through results and create new singleLog objects
+            do {
+                int wildlifeID = cursor.getInt(0);
+                String userId = cursor.getString(1);
+                String type = cursor.getString(2);
+                String species = cursor.getString(3);
+
+                WildLife newWildLife = new WildLife(userId, wildlifeID, type, species);
+                returnList.add(newWildLife);
+
+            } while (cursor.moveToNext());
+        }
+        else {
+            // failure do not add anything
+        }
+        // close both the cursor and the db when done
+        cursor.close();
+        db.close();
+        return returnList;
+
     }
 
 //    public boolean deleteWildlife(Wildlife wildlife) {

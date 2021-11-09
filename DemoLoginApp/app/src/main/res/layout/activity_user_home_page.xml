@@ -6,6 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".UserHomePage">
 
+    <Button
+        android:id="@+id/btn_Wildlife"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="WILDLIFE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enter_DiveLog"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <Button
+        android:id="@+id/btn_Equipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="160dp"
+        android:text="EQUIPMENT"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Wildlife"
+        app:layout_constraintVertical_bias="1.0" />
+
     <TextView
         android:id="@+id/home_page"
         android:layout_width="274dp"
@@ -33,7 +58,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.619" />
+        app:layout_constraintVertical_bias="0.55" />
 
     <Button
         android:id="@+id/back_to_signIn"
@@ -42,10 +67,10 @@
         android:text="sign out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.737" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_Equipment"
+        app:layout_constraintVertical_bias="0.294" />
 
     <TextView
         android:id="@+id/textView3"

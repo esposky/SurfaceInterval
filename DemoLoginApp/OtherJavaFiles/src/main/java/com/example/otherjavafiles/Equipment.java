@@ -10,13 +10,13 @@ public class Equipment {
     private double price = 0;
 
     //Constructor for owned equipment
-    public Equipment(String userID, int equipmentID, String ty, String ma, String mo){
-        setUserID(userID);
-        setEquipmentID(equipmentID);
-        setType(ty);
-        setMake(ma);
-        setModel(mo);
-    }
+    // public Equipment(String userID, int equipmentID, String ty, String ma, String mo){
+//        setUserID(userID);
+//        setEquipmentID(equipmentID);
+//        setType(ty);
+//        setMake(ma);
+//        setModel(mo);
+//    }
 
     //Constructor for rented equipment
     public Equipment(String userID, int equipmentID, String ty, String ma, String mo, boolean rent, double pr){

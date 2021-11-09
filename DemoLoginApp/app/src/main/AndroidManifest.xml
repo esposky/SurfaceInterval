@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoLoginApp">
         <activity
+            android:name=".EquipmentMenu"
+            android:exported="true" />
+        <activity
+            android:name=".WildlifeMenu"
+            android:exported="true" />
+        <activity
             android:name=".DivingLogMainPage"
             android:exported="false" />
         <activity
