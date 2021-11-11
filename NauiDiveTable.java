@@ -11,21 +11,21 @@ public class NauiDiveTable
 	
 	//profile constructor for single dive w/surface interval
 	//(depth in feet, time in minutes, surface interval in minutes)
-	NauiDiveTable(int depth1, int time1, int surfInt){
+	public NauiDiveTable(int depth1, int time1, int surfInt){
 		pg = calcPressureGroup(depth1, time1);
 		pg = calcPostSIPG(pg, surfInt);
 	}
 	
 	//profile constructor for single dive after previous dive to accept pressure group
 	//(depth in feet, time in minutes, surface interval in minutes)
-	NauiDiveTable(char currPG, int depth, int time, int surfInt){
+	public NauiDiveTable(char currPG, int depth, int time, int surfInt){
 		pg = calcPressureGroup(depth, time + calcResidualNitrogen(currPG, depth));
 		pg = calcPostSIPG(pg, surfInt);
 	}
 	
 	//profile constructor for 2 dive profile w/surface interval
 	//(depth1, time1, surface interval1, depth2, time2)
-	NauiDiveTable(int depth1, int time1, int surfInt, int depth2, int time2){
+	public NauiDiveTable(int depth1, int time1, int surfInt, int depth2, int time2){
 		pg = calcPressureGroup(depth1, time1);
 		pg = calcPostSIPG(pg, surfInt);
 		pg = calcPressureGroup(depth2, time2 + calcResidualNitrogen(pg, depth2));
@@ -33,7 +33,7 @@ public class NauiDiveTable
 	
 	//profile constructor for 3 dive profile w/2 surface intervals
 	//(depth1, time1, surface interval1, depth2, time2, surface interval2, depth3, time3)
-	NauiDiveTable(int depth1, int time1, int surfInt1, int depth2, int time2, int surfInt2, int depth3, int time3){
+	public NauiDiveTable(int depth1, int time1, int surfInt1, int depth2, int time2, int surfInt2, int depth3, int time3){
 		pg = calcPressureGroup(depth1, time1);
 		pg = calcPostSIPG(pg, surfInt1);
 		pg = calcPressureGroup(depth2, time2 + calcResidualNitrogen(pg, depth2));
@@ -536,7 +536,7 @@ public class NauiDiveTable
 			else
 				return 'A';
 		default:
-			return 'Z';
+			return '!';
 		}
 	}
 	
@@ -582,7 +582,7 @@ public class NauiDiveTable
 				safetyStop = 5;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 5:
 			if(diveTime < 11)
@@ -608,7 +608,7 @@ public class NauiDiveTable
 				safetyStop = 5;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 6:
 			if(diveTime < 11)
@@ -636,7 +636,7 @@ public class NauiDiveTable
 				safetyStop = 7;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 7:
 			if(diveTime < 6)
@@ -668,7 +668,7 @@ public class NauiDiveTable
 				safetyStop = 14;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 8:
 			if(diveTime < 6)
@@ -698,7 +698,7 @@ public class NauiDiveTable
 				safetyStop = 17;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 9:
 			if(diveTime < 6)
@@ -726,7 +726,7 @@ public class NauiDiveTable
 				safetyStop = 18;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 10:
 			if(diveTime < 6)
@@ -750,7 +750,7 @@ public class NauiDiveTable
 				safetyStop = 15;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 11:
 			if(diveTime < 6)
@@ -770,7 +770,7 @@ public class NauiDiveTable
 				safetyStop = 7;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 12:
 			if(diveTime < 6)
@@ -792,7 +792,7 @@ public class NauiDiveTable
 				safetyStop = 14;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		case 13:
 			if(diveTime < 6)
@@ -808,10 +808,10 @@ public class NauiDiveTable
 				safetyStop = 10;
 			}
 			else
-				presGrp = 'Z';
+				presGrp = '!';
 			break;
 		default:
-			presGrp = 'Z';
+			presGrp = '!';
 			break;
 		}
 		if(diveNum == 1)
@@ -821,6 +821,10 @@ public class NauiDiveTable
 		else 
 			ss3 = safetyStop;
 		return presGrp;
+	}
+ 	
+ 	public String toString() {
+		return ("Pressure Group: " + getPG() + ", Safety Stop: " + getSS1());
 	}
 
 }
