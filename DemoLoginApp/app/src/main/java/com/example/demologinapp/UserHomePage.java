@@ -12,7 +12,6 @@ import android.widget.Toast;
 public class UserHomePage extends AppCompatActivity {
 
     Button to_DiveLog,back_toLogin, btnWildlife, btnEquipment;
-    TextView loginID;
 
 
     @Override
@@ -21,23 +20,20 @@ public class UserHomePage extends AppCompatActivity {
         setContentView(R.layout.activity_user_home_page);
 
         // Get values from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
+        //Bundle bundle = getIntent().getExtras();
+        //String userID = bundle.getString("ID");
 
         to_DiveLog = (Button) findViewById(R.id.enter_DiveLog);
         back_toLogin = (Button) findViewById(R.id.back_to_signIn);
-        loginID = findViewById(R.id.textView3);
         btnWildlife = findViewById(R.id.btn_Wildlife);
         btnEquipment = findViewById(R.id.btn_Equipment);
 
-        loginID.setText(userID);
 
         // On click listener to send user to their divelog page
         to_DiveLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),DivingLogMainPage.class);
-                intent.putExtra("ID", userID);
                 startActivity(intent);
             }
         });

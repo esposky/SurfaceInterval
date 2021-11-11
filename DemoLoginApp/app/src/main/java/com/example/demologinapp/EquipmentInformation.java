@@ -56,7 +56,7 @@ public class EquipmentInformation extends AppCompatActivity {
                     String input_model = model.getText().toString();
                     Boolean rented = cbRented.isChecked();
                     String input_price = price.getText().toString();
-                    Double x = null;
+                    Double x = 0.0;
                     if(!input_price.isEmpty())
                         x = Double.parseDouble(input_price);
 

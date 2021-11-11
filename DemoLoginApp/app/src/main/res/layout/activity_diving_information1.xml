@@ -24,6 +24,46 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
+        android:id="@+id/enter_max"
+        android:layout_width="126dp"
+        android:layout_height="32dp"
+        android:background="@drawable/edit_text_custom"
+        android:hint=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.306" />
+
+    <TextView
+        android:id="@+id/enter_Temp2"
+        android:layout_width="126dp"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="4.Enter Temp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.483" />
+
+    <EditText
+        android:id="@+id/enter_visibility"
+        android:layout_width="126dp"
+        android:layout_height="31dp"
+        android:background="@drawable/edit_text_custom"
+        android:hint=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.661" />
+
+    <EditText
         android:id="@+id/enter_duration"
         android:layout_width="125dp"
         android:layout_height="33dp"
@@ -32,7 +72,7 @@
         android:hint=" "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.189" />
@@ -46,104 +86,10 @@
         android:text="1.Enter Duration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.132" />
-
-    <EditText
-        android:id="@+id/enter_max"
-        android:layout_width="126dp"
-        android:layout_height="32dp"
-        android:background="@drawable/edit_text_custom"
-        android:hint=" "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
-
-    <TextView
-        android:id="@+id/enter_max2"
-        android:layout_width="126dp"
-        android:layout_height="30dp"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="2.Enter maxDepth"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.256" />
-
-    <EditText
-        android:id="@+id/enter_avgDepth"
-        android:layout_width="126dp"
-        android:layout_height="32dp"
-        android:background="@drawable/edit_text_custom"
-        android:hint=" "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.426" />
-
-    <TextView
-        android:id="@+id/enter_avgDepth2"
-        android:layout_width="126dp"
-        android:layout_height="30dp"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="3.Enter avgDepth"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.365" />
-
-    <EditText
-        android:id="@+id/enter_Temp"
-        android:layout_width="127dp"
-        android:layout_height="32dp"
-        android:background="@drawable/edit_text_custom"
-        android:hint=" "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.003"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.54" />
-
-    <TextView
-        android:id="@+id/enter_Temp2"
-        android:layout_width="126dp"
-        android:layout_height="30dp"
-        android:gravity="center_vertical"
-        android:padding="5dp"
-        android:text="4.Enter Temp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.007"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.483" />
-
-    <EditText
-        android:id="@+id/enter_visibility"
-        android:layout_width="126dp"
-        android:layout_height="31dp"
-        android:background="@drawable/edit_text_custom"
-        android:hint=" "
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.661" />
 
     <TextView
         android:id="@+id/enter_visibility2"
@@ -154,10 +100,64 @@
         android:text="5.Enter Visibility"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
+
+    <TextView
+        android:id="@+id/enter_avgDepth2"
+        android:layout_width="126dp"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="3.Enter avgDepth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.365" />
+
+    <EditText
+        android:id="@+id/enter_avgDepth"
+        android:layout_width="126dp"
+        android:layout_height="32dp"
+        android:background="@drawable/edit_text_custom"
+        android:hint=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.426" />
+
+    <EditText
+        android:id="@+id/enter_Temp"
+        android:layout_width="127dp"
+        android:layout_height="32dp"
+        android:background="@drawable/edit_text_custom"
+        android:hint=" "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.54" />
+
+    <TextView
+        android:id="@+id/enter_max2"
+        android:layout_width="126dp"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:padding="5dp"
+        android:text="2.Enter maxDepth"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.255" />
 
     <EditText
         android:id="@+id/enter_pressureStart"

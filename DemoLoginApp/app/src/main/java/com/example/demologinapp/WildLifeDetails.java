@@ -36,8 +36,10 @@ public class WildLifeDetails extends AppCompatActivity {
         setContentView(R.layout.activity_wild_life_details);
 
         // Grabbing userID from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
+//        Bundle bundle = getIntent().getExtras();
+//        String userID = bundle.getString("ID");
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
+        String userID = sharedPreferences.getString("userID", "0");
 
         type = (EditText)findViewById(R.id.wild_lifeType);
         species = (EditText) findViewById(R.id.wild_lifeSpecies);
@@ -57,6 +59,7 @@ public class WildLifeDetails extends AppCompatActivity {
                         throw new InputMismatchException("Please enter wild life information and press complete");
                     }
                     wildLife = new WildLife(userID, -1, inputType,inputSpecies);
+
                     // Add to database
                     databaseHelper = new DatabaseHelper(WildLifeDetails.this);
                     Boolean wildlifeInsert = databaseHelper.addNewWildlife(wildLife);
@@ -64,9 +67,9 @@ public class WildLifeDetails extends AppCompatActivity {
                         // Set wildlifelist later
                         wildLife.setWildlifeID(Integer.parseInt(databaseHelper.getWildlifeId(wildLife)));
                         output.setText(wildLife.toString());
-                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
-                        editor.putString("wildlifeID", databaseHelper.getWildlifeId(wildLife));
-                        editor.apply();
+//                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
+//                        editor.putString("wildlifeID", databaseHelper.getWildlifeId(wildLife));
+//                        editor.apply();
                     }
                     else {
                         Toast.makeText(WildLifeDetails.this, "Could not add to database", Toast.LENGTH_SHORT).show();
@@ -81,12 +84,7 @@ public class WildLifeDetails extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),OtherDivingDetails.class);
-                //intent.putExtra("ID", userID);
-                //intent.putExtra("wildlifeID", databaseHelper.getWildlifeId(wildLife));
-                //setResult(RESULT_OK, intent);
                 finish();
-                //startActivity(intent);
             }
         });
 

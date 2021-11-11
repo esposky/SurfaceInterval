@@ -71,7 +71,7 @@ public class DivingLocation extends AppCompatActivity {
                             input_hour.isEmpty() || input_minutes.isEmpty()) {
                         throw new InputMismatchException("Please Enter the following details and then press complete");
                     }
-                    locationDetails = new LocationDetails(input_location,m,d,y,h,mm,input_siteName);
+                    locationDetails = new LocationDetails(input_location,y, m, d,h,mm,input_siteName);
                     output.setText(locationDetails.toString());
                 }catch (InputMismatchException e) {
 
