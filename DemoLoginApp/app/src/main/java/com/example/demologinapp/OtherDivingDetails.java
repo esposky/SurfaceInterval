@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.otherjavafiles.DatabaseHelper;
+import com.example.otherjavafiles.EquipmentList;
 import com.example.otherjavafiles.SingleLog;
+import com.example.otherjavafiles.SingleLogTest;
+import com.example.otherjavafiles.WildLifeList;
 
 public class OtherDivingDetails extends AppCompatActivity {
 
@@ -20,7 +23,7 @@ public class OtherDivingDetails extends AppCompatActivity {
     DatabaseHelper databaseHelper;
 
     SharedPreferences myPrefs;
-    String wildlifeID;
+    String wildlifeID, userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +31,8 @@ public class OtherDivingDetails extends AppCompatActivity {
         setContentView(R.layout.activity_other_diving_details);
         myPrefs = this.getSharedPreferences(MY_PREFS, MODE_PRIVATE);
         // Grabbing userID from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
         wildlifeID = myPrefs.getString("wildlifeID", "Nothing yet");
+        userID = myPrefs.getString("userID", "Nothing");
 
 
         wildlife = (Button)findViewById(R.id.wild_life);
@@ -46,7 +48,6 @@ public class OtherDivingDetails extends AppCompatActivity {
             public void onClick(View view) {
                 // Switched to use wildlife menu
                 Intent intent = new Intent(getApplicationContext(),WildlifeMenu.class);
-                intent.putExtra("ID", userID);
                 startActivity(intent);
                 //getWildLifeIDLauncher.launch(intent);
             //startActivityForResult(intent, MY_REQUEST_CODE);
@@ -57,8 +58,7 @@ public class OtherDivingDetails extends AppCompatActivity {
         equipment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),EquipmentInformation.class);
-                intent.putExtra("ID", userID);
+                Intent intent = new Intent(getApplicationContext(),EquipmentMenu.class);
                 startActivity(intent);
 
             }
@@ -68,7 +68,6 @@ public class OtherDivingDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),DivingBuddy.class);
-                intent.putExtra("ID", userID);
                 startActivity(intent);
             }
         });
@@ -78,22 +77,41 @@ public class OtherDivingDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Once button is clicked the completed information is stored in the database
-
-                SingleLog singleLog = new SingleLog(DivingLocation.getData(),DivingInformation1.getData(),DivingBuddy.getData(),EquipmentInformation.getData(),WildLifeDetails.getData());
-                try {
+                // Commented out
+                //SingleLog singleLog = new SingleLog(DivingLocation.getData(),DivingInformation1.getData(),DivingBuddy.getData(),EquipmentInformation.getData(), (WildLifeList) WildlifeMenu.getData());
+                SingleLogTest singleLogTest = new SingleLogTest(DivingLocation.getData(),DivingInformation1.getData(),DivingBuddy.getData(), EquipmentMenu.getData(), WildlifeMenu.getData());
+                //try {
                     databaseHelper = new DatabaseHelper(OtherDivingDetails.this);
-                    Boolean insertLog = databaseHelper.addNewLog(singleLog, userID);
+                    // Try test database add
+                    Boolean insertLog = databaseHelper.addNewLogTest(singleLogTest, userID);
                     if (insertLog) {
-                        Intent intent = new Intent(getApplicationContext(), CompletedNewDiveLog.class);
-                        intent.putExtra("ID", userID);
-                        startActivity(intent);
+                        String logID = databaseHelper.getLastAdded();
+                        Boolean updateWildlifeID = databaseHelper.updateWildlifeID(logID);
+                        Boolean updateEquipmentID = databaseHelper.updateEquipmentID(logID);
+                        // If ID is updated correctly
+                        if (updateWildlifeID && updateEquipmentID) {
+                            databaseHelper.insertWildlifeLogTable((WildLifeList) WildlifeMenu.getData(), logID);
+                            databaseHelper.insertEquipmentLogTable((EquipmentList) EquipmentMenu.getData(), logID);
+                            Intent intent = new Intent(getApplicationContext(), CompletedNewDiveLog.class);
+                            startActivity(intent);
+                        }
                     }
                     else {
                         Toast.makeText(OtherDivingDetails.this, "Can't insert log", Toast.LENGTH_LONG).show();
                     }
-                } catch (Exception e) {
-                    Toast.makeText(OtherDivingDetails.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                    // Comment out adding to database for testing
+//                    Boolean insertLog = databaseHelper.addNewLog(singleLog, userID);
+//                    if (insertLog) {
+//                        Intent intent = new Intent(getApplicationContext(), CompletedNewDiveLog.class);
+//                        intent.putExtra("ID", userID);
+//                        startActivity(intent);
+//                    }
+//                    else {
+//                        Toast.makeText(OtherDivingDetails.this, "Can't insert log", Toast.LENGTH_LONG).show();
+//                    }
+                //} catch (Exception e) {
+                    //Toast.makeText(OtherDivingDetails.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                //}
             }
         });
 
@@ -101,7 +119,6 @@ public class OtherDivingDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),UserHomePage.class);
-                intent.putExtra("ID", userID);
                 startActivity(intent);
             }
         });

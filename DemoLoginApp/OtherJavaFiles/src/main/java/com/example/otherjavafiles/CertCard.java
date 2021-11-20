@@ -2,8 +2,9 @@ package com.example.otherjavafiles;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 
-public class CertCard {
+public class CertCard implements Serializable {
     private File imgFront = null;
     private File imgBack = null;
     private String type;

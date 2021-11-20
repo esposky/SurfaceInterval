@@ -1,6 +1,8 @@
 package com.example.otherjavafiles;
 
-public class DivePartner {
+import java.io.Serializable;
+
+public class DivePartner implements Serializable {
 
     private String userID;
     private int partnerID;

@@ -1,6 +1,8 @@
 package com.example.otherjavafiles;
 
-public class WildLife {
+import java.io.Serializable;
+
+public class WildLife implements Serializable {
     private String userID;
     private int wildlifeID;
     private String type;

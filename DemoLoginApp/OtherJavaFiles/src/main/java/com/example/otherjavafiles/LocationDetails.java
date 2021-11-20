@@ -2,9 +2,10 @@ package com.example.otherjavafiles;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class LocationDetails {
+public class LocationDetails implements Serializable {
     private String location;
     private GregorianCalendar date;
     private String siteName;

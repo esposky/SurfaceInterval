@@ -5,20 +5,27 @@ public class SingleLog {
     DivePartner buddy;
     LocationDetails location;
     EquipmentList equip;
-    WildLifeList wildlife;
+    WildLifeList wildLifeList;
     Equipment equipment;
     WildLife wildLife;
 
     //Constructor to create log object using broken down class definitions for easier readability,
     //each object would be created in its own page in app
-    public SingleLog(LocationDetails loc, DiveDetails dive, DivePartner buddy, EquipmentList equip, WildLifeList wlList){
-        setLocation(loc);
-        setDive(dive);
-        setBuddy(buddy);
-        setEquip(equip);
-        setWildlife(wlList);
-    }
+//    public SingleLog(LocationDetails loc, DiveDetails dive, DivePartner buddy, EquipmentList equip, WildLifeList wildLifeList){
+//        setLocation(loc);
+//        setDive(dive);
+//        setBuddy(buddy);
+//        setEquip(equip);
+//        setWildlife(wildLifeList);
+//    }
     // Using Equipment and Wildlife instead of list versions
+//    public void SingleLogTest(LocationDetails loc, DiveDetails dive, DivePartner buddy, Equipment equip, WildLifeList wildLife){
+//        setLocation(loc);
+//        setDive(dive);
+//        setBuddy(buddy);
+//        setEquipment(equip);
+//        setWildlife(wildLife);
+//    }
     public SingleLog(LocationDetails loc, DiveDetails dive, DivePartner buddy, Equipment equip, WildLife wildLife){
         setLocation(loc);
         setDive(dive);
@@ -61,11 +68,11 @@ public class SingleLog {
     }
 
     public WildLifeList getWildlife() {
-        return wildlife;
+        return wildLifeList;
     }
 
-    public void setWildlife(WildLifeList wildlife) {
-        this.wildlife = wildlife;
+    public void setWildlife(WildLifeList wildLifeList) {
+        this.wildLifeList = wildLifeList;
     }
 
     public Equipment getEquipment() {

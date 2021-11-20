@@ -34,9 +34,9 @@ public class EquipmentInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment_information);
 
-        // Grabbing userID from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
+        // Grabbing userID from shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
+        String userID = sharedPreferences.getString("userID", "0");
 
         type = (EditText)findViewById(R.id.typeOf_equipment);
         make = (EditText)findViewById(R.id.makeOf_equipment);
@@ -44,6 +44,8 @@ public class EquipmentInformation extends AppCompatActivity {
         price = (EditText)findViewById(R.id.price_equipment);
         output = (TextView)findViewById(R.id.outputFor_equipment);
         cbRented = (CheckBox)findViewById(R.id.cbRented);
+        back = (Button)findViewById(R.id.back_to_otherDetails2);
+        databaseHelper = new DatabaseHelper(EquipmentInformation.this);
 
         findViewById(R.id.complete_equipmentSection).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,8 +59,7 @@ public class EquipmentInformation extends AppCompatActivity {
                     Boolean rented = cbRented.isChecked();
                     String input_price = price.getText().toString();
                     Double x = 0.0;
-                    if(!input_price.isEmpty())
-                        x = Double.parseDouble(input_price);
+                    if(!input_price.isEmpty()) { x = Double.parseDouble(input_price);}
 
 
                     //String input_rent = rent.getText().toString(); // represents input_price
@@ -68,28 +69,28 @@ public class EquipmentInformation extends AppCompatActivity {
                         throw new InputMismatchException("Please the following details and press complete");
                     }
                     else {
+                        // If rented checkbox is checked for true
                         if (rented) {
                             equipment = new Equipment(userID, -1, input_type, input_make, input_model, true, x);
-                            databaseHelper = new DatabaseHelper(EquipmentInformation.this);
                             Boolean addEquipment = databaseHelper.addNewEquipment(equipment);
                             if (addEquipment) {
                                 equipment.setEquipmentID(Integer.parseInt(databaseHelper.getEquipmentId(equipment)));
-                                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
-                                editor.putString("equipmentID", databaseHelper.getEquipmentId(equipment));
-                                editor.apply();
+//                                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
+//                                editor.putString("equipmentID", databaseHelper.getEquipmentId(equipment));
+//                                editor.apply();
                             }
                             else {
                                 Toast.makeText(EquipmentInformation.this, "Problem adding rented equipment", Toast.LENGTH_LONG).show();
                             }
-                        } else {
+                        }
+                        // If false, price is zero
+                        else {
                             equipment = new Equipment(userID, -1, input_type, input_make, input_model, false, x);
-                            databaseHelper = new DatabaseHelper(EquipmentInformation.this);
                             Boolean addEquipment = databaseHelper.addNewEquipment(equipment);
                             if (addEquipment) {
-                                databaseHelper.addNewEquipment(equipment);
-                                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
-                                editor.putString("equipmentID", databaseHelper.getEquipmentId(equipment));
-                                editor.apply();
+//                                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
+//                                editor.putString("equipmentID", databaseHelper.getEquipmentId(equipment));
+//                                editor.apply();
                             }
                             else {
                                 Toast.makeText(EquipmentInformation.this, "Problem adding non-rented equipment", Toast.LENGTH_LONG).show();
@@ -106,53 +107,14 @@ public class EquipmentInformation extends AppCompatActivity {
             }
         });
 
-
-        back = (Button)findViewById(R.id.back_to_otherDetails2);
-
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),OtherDivingDetails.class);
-                intent.putExtra("ID", userID);
                 finish();
             }
         });
     }
     public static Equipment getData() {
         return equipment;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

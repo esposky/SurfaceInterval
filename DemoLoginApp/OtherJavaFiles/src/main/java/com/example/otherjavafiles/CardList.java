@@ -1,6 +1,8 @@
 package com.example.otherjavafiles;
 
-public class CardList {
+import java.io.Serializable;
+
+public class CardList implements Serializable {
     private CertCard[] list;
 
     CardList(CertCard[] list){

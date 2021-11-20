@@ -35,9 +35,7 @@ public class WildLifeDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wild_life_details);
 
-        // Grabbing userID from previous page
-//        Bundle bundle = getIntent().getExtras();
-//        String userID = bundle.getString("ID");
+        // Grabbing userID from shared preferences
         SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
         String userID = sharedPreferences.getString("userID", "0");
 

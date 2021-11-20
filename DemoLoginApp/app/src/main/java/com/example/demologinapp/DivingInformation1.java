@@ -30,8 +30,6 @@ public class DivingInformation1 extends AppCompatActivity {
         setContentView(R.layout.activity_diving_information1);
 
         // Grabbing userID from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
 
 
         duration = (EditText) findViewById(R.id.enter_duration);
@@ -95,7 +93,6 @@ public class DivingInformation1 extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     Intent intent = new Intent(getApplicationContext(), OtherDivingDetails.class);
-                    intent.putExtra("ID", userID);
                     startActivity(intent);
                 } catch (Exception e) {
                     Toast.makeText(DivingInformation1.this, e.getMessage(), Toast.LENGTH_LONG).show();

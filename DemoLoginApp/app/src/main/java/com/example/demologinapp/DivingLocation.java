@@ -27,8 +27,6 @@ public class DivingLocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diving_location);
         // Grabbing userID from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
 
         output = (TextView)findViewById(R.id.output4);
 
@@ -87,7 +85,6 @@ public class DivingLocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DivingInformation1.class);
-                intent.putExtra("ID", userID);
                 startActivity(intent);
             }
         });

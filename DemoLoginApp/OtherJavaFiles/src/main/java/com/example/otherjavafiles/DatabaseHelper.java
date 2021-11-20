@@ -2,7 +2,6 @@ package com.example.otherjavafiles;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -10,12 +9,11 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.GregorianCalendar;
+import java.util.Arrays;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    private static final String MY_PREFS = "MyPrefsFile";
     private static final String MAIN_TABLE = "MAIN_TABLE";
     private static final String USER_ID = "USER_ID";
     private static final String LOG_ID = "LOG_ID";
@@ -63,8 +61,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String COLUMN_LOCATION = "LOCATION";
     private static final String COLUMN_SITENAME = "SITENAME";
     private static final String COLUMN_USERNAME = "USERNAME";
-
-    SharedPreferences myPrefs;
+    private static final String WILDLIFE_LOG_TABLE = "WILDLIFE_LOG_TABLE";
+    private static final String EQUIPMENT_LOG_TABLE = "EQUIPMENT_LOG_TABLE";
 
 
     public DatabaseHelper(@Nullable Context context) {super(context, "surfaceinterval.db", null, 1);}
@@ -79,11 +77,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String createDiveLogTableStatement = "CREATE TABLE " + DIVELOG_TABLE + " (" + LOG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID +" INTEGER,"+ COLUMN_DATE + " TEXT, " + COLUMN_LOCATION + " TEXT, " + COLUMN_SITENAME + " TEXT, " + COLUMN_DURATION + " INTEGER, " + COLUMN_MAX_DEPTH + " INTEGER, " + COLUMN_AVERAGE_DEPTH + " INTEGER, "
                 + COLUMN_PRESSURE_GROUP + " CHAR, " + COLUMN_TEMPERATURE + " INTEGER, " + COLUMN_VISIBILITY + " TEXT, " + COLUMN_PRESSURE_START + " INTEGER, " + COLUMN_PRESSURE_END + " INTEGER, " + COLUMN_AIR_TYPE + " TEXT, " + COLUMN_WEIGHT + " INTEGER, " + COLUMN_EXPOSURE_PROTECTION + " INTEGER, " + COLUMN_EQUIPMENT_ID + " INTEGER, "
                 + COLUMN_DIVE_CONDITIONS + " TEXT, " + COLUMN_DIVE_ACTIVITIES + " TEXT, " + COLUMN_WILDLIFE_ID + " INTEGER, " + COLUMN_COMMENT + " TEXT, " + COLUMN_DIVE_PARTNER + " INTEGER)";
-        String createEquipmentTableStatement = "CREATE TABLE " + EQUIPMENT_TABLE + " (" + COLUMN_EQUIPMENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID +" INTEGER, " + COLUMN_GEAR_TYPE + " TEXT, " + COLUMN_BRAND + " TEXT, " + COLUMN_MODEL + " TEXT, " + COLUMN_RENTED + " TEXT, " + COLUMN_PRICE + " INTEGER, " + "FOREIGN KEY("+USER_ID+") REFERENCES " + USER_TABLE + "(" + USER_ID +"))";
+        String createEquipmentTableStatement = "CREATE TABLE " + EQUIPMENT_TABLE + " (" + COLUMN_EQUIPMENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID +" INTEGER, " + COLUMN_GEAR_TYPE + " TEXT, " + COLUMN_BRAND + " TEXT, " + COLUMN_MODEL + " TEXT, " + COLUMN_RENTED + " TEXT, " + COLUMN_PRICE + " REAL, " + "FOREIGN KEY("+USER_ID+") REFERENCES " + USER_TABLE + "(" + USER_ID +"))";
         String createWildlifeTableStatement = "CREATE TABLE " + WILDLIFE_TABLE + " (" + COLUMN_WILDLIFE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID +" INTEGER, " + COLUMN_WILDLIFE_TYPE + " TEXT, " + COLUMN_SPECIES + " TEXT, " + "FOREIGN KEY("+USER_ID+") REFERENCES " + USER_TABLE + "(" + USER_ID +"))";
         String createPartnerTableStatement = "CREATE TABLE " + PARTNER_TABLE + " (" + COLUMN_PARTNER_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + USER_ID +" INTEGER, " + COLUMN_NAME + " TEXT, " + COLUMN_ASSOCIATION + " TEXT, " + COLUMN_CERT_NUM + " INTEGER, " + "FOREIGN KEY("+USER_ID+") REFERENCES " + USER_TABLE + "(" + USER_ID +"))";
-
-
+        // Create table that has the wildlife correlating to the order ID.
+        String createWildlifeLogTableStatement = "CREATE TABLE " + WILDLIFE_LOG_TABLE + " (" + LOG_ID + " INTEGER, " + COLUMN_WILDLIFE_ID + " INTEGER)";
+        String createEquipmentLogTableStatement = "CREATE TABLE " + EQUIPMENT_LOG_TABLE + " (" + LOG_ID + " INTEGER, " + COLUMN_EQUIPMENT_ID + " INTEGER)";
         // Executes query for tables
         db.execSQL(createMainTableStatement);
         db.execSQL(createUserTableStatement);
@@ -91,6 +90,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(createEquipmentTableStatement);
         db.execSQL(createWildlifeTableStatement);
         db.execSQL(createPartnerTableStatement);
+        db.execSQL(createWildlifeLogTableStatement);
+        db.execSQL(createEquipmentLogTableStatement);
 
     } // END onCreate
 
@@ -119,6 +120,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     } // end addNewUser
 
+    // Delete a user
     public boolean deleteUser(UserInfo userInfo) {
         // Find user in database. If found delete true
 
@@ -236,6 +238,278 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Used to test multiple wildlife and equipment
+    public boolean addNewLogTest(SingleLogTest singleLog, String userID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        // List to hold wildlife list
+        List<WildLife> wildList = new ArrayList<WildLife>();
+        wildList = singleLog.wildLifeList.getWildLifeList();
+        String wildNums = "";
+
+        // List to hold equipment list
+        List<Equipment> equipList = new ArrayList<Equipment>();
+        equipList = singleLog.equipmentList.getEquipList();
+        String equipNums = "";
+
+        cv.put(USER_ID, userID);
+        // Put Values for location items
+        cv.put(COLUMN_DATE, singleLog.location.getDate());
+        cv.put(COLUMN_LOCATION, singleLog.location.getLocation());
+        cv.put(COLUMN_SITENAME, singleLog.location.getSiteName());
+
+        // Put values for dive
+        cv.put(COLUMN_DURATION, singleLog.dive.getDuration());
+        cv.put(COLUMN_MAX_DEPTH, singleLog.dive.getMaxDepth());
+        cv.put(COLUMN_AVERAGE_DEPTH, singleLog.dive.getAvgDepth());
+        //cv.put(COLUMN_PRESSURE_GROUP, (byte) singleLog.dive.getPressureGroup());
+        cv.put(COLUMN_TEMPERATURE, singleLog.dive.getTemp());
+        cv.put(COLUMN_VISIBILITY, singleLog.dive.getVisibility());
+        cv.put(COLUMN_PRESSURE_START, singleLog.dive.getPressureStart());
+        cv.put(COLUMN_PRESSURE_END, singleLog.dive.getPressureEnd());
+        cv.put(COLUMN_AIR_TYPE, singleLog.dive.getAirType());
+        cv.put(COLUMN_DIVE_CONDITIONS, singleLog.dive.getDiveConditionsNA());
+        cv.put(COLUMN_DIVE_ACTIVITIES, singleLog.dive.getDiveActivitiesNA());
+
+//        // Put values for equipment
+//        for (Equipment equipment : equipList) {
+//            equipNums += equipment.getEquipmentID() + " ";
+//        }
+//        cv.put(COLUMN_EQUIPMENT_ID, equipNums);
+//
+//        //cv.put(COLUMN_WILDLIFE_ID, wildNums);
+
+        // Put values for Dive Partner
+        cv.put(COLUMN_DIVE_PARTNER, singleLog.buddy.getPartnerID());
+
+        long insert = db.insert(DIVELOG_TABLE, null, cv);
+        if (insert == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    // Returns last divelog id
+    public String getLastAdded () {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + DIVELOG_TABLE + " ORDER BY " + LOG_ID + " DESC LIMIT 1", null);
+        String ID = "";
+        if(cursor != null && cursor.moveToFirst()) {
+            ID = cursor.getString(0);
+
+        }
+
+        db.close();
+        return ID;
+    }
+    // Inserts the wildlife ID after we get the log ID
+    public boolean updateWildlifeID (String ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_WILDLIFE_ID, ID);
+        long insert = db.update(DIVELOG_TABLE, cv, LOG_ID + " = ?", new String[]{ID});
+        if (insert == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+    // Inserts the Equipment ID after we get the log ID
+    public boolean updateEquipmentID (String ID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_EQUIPMENT_ID, ID);
+        long insert = db.update(DIVELOG_TABLE, cv, LOG_ID + " = ?", new String[]{ID});
+        if (insert == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    // Test new table
+    public void insertWildlifeLogTable (WildLifeList wildLifeList, String logID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        // List to hold wildlife list
+        List<WildLife> wildList = new ArrayList<WildLife>();
+        wildList = wildLifeList.getWildLifeList();
+
+        // for each wildlife in the list add to table with same log ID
+        db.beginTransaction();
+        try {
+            for (WildLife wildLife : wildList) {
+                cv.put(LOG_ID, logID);
+                cv.put(COLUMN_WILDLIFE_ID, wildLife.getWildlifeID());
+                db.insert(WILDLIFE_LOG_TABLE, null, cv);
+            }
+            db.setTransactionSuccessful();
+        }
+        finally {
+            db.endTransaction();
+        }
+        db.close();
+    }
+
+    public void insertEquipmentLogTable (EquipmentList equipmentList, String logID) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        // List to hold wildlife list
+        List<Equipment> equipList = new ArrayList<Equipment>();
+        equipList = equipmentList.getEquipList();
+
+        // for each wildlife in the list add to table with same log ID
+        db.beginTransaction();
+        try {
+            for (Equipment equipment : equipList) {
+                cv.put(LOG_ID, logID);
+                cv.put(COLUMN_EQUIPMENT_ID, equipment.getEquipmentID());
+                db.insert(EQUIPMENT_LOG_TABLE, null, cv);
+            }
+            db.setTransactionSuccessful();
+        }
+        finally {
+            db.endTransaction();
+        }
+        db.close();
+    }
+
+    // Maybe create a function to parse the single log wildlifeid/equipmentid
+    // and then loop through those. Something like that need to find out how to access
+    // all of the ids even though their in the same
+
+    public List<SingleLogTest> getLogsTest() {
+        List<SingleLogTest> returnList = new ArrayList<>();
+        List<WildLife> tempWildList = new ArrayList<WildLife>();
+        List<Equipment> tempEquipList = new ArrayList<Equipment>();
+
+        // Query Strings to return all needed tables
+
+        String queryString = "SELECT * FROM DIVELOG_TABLE A "
+                + "INNER JOIN WILDLIFE_TABLE B ON A.WILDLIFE_ID = B.WILDLIFE_ID "
+                + "INNER JOIN PARTNER_TABLE C ON A.DIVE_PARTNER = C.PARTNER_ID "
+                + "INNER JOIN EQUIPMENT_TABLE D ON A.EQUIPMENT_ID = D.EQUIPMENT_ID";
+
+        //Get database to read and execute queries
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        // loop through results and create new singleLog objects
+        if (cursor.moveToFirst()) {
+            do {
+                // Returns the logID first to then be used to fill the wildlife and equipment lists
+                String logID = cursor.getString(0);
+                String testWildlifeQuery = "SELECT A.LOG_ID, A.WILDLIFE_ID, B.USER_ID, C.WILDLIFE_TYPE, C.SPECIES  FROM WILDLIFE_LOG_TABLE A "
+                        + "JOIN DIVELOG_TABLE B ON A.LOG_ID = B.LOG_ID "
+                        + "JOIN WILDLIFE_TABLE C ON A.WILDLIFE_ID = C.WILDLIFE_ID "
+                        + "WHERE A.LOG_ID = ?";
+
+                // Once logID is found, it loops through the resulting wildlife in the wildlife_log_table
+                Cursor wildCursor = db.rawQuery(testWildlifeQuery, new String[]{logID});
+                if (wildCursor.moveToFirst()) {
+                    // Loop through results and
+                    do {
+                        WildLife wildLife = new WildLife(wildCursor.getString(wildCursor.getColumnIndexOrThrow(USER_ID)),wildCursor.getInt(wildCursor.getColumnIndexOrThrow(COLUMN_WILDLIFE_ID)), wildCursor.getString(wildCursor.getColumnIndexOrThrow(COLUMN_WILDLIFE_TYPE)), wildCursor.getString(wildCursor.getColumnIndexOrThrow(COLUMN_SPECIES)));
+                        tempWildList.add(wildLife);
+                    } while (wildCursor.moveToNext());
+                }
+                /*
+                1st. Creates new temp list based on the list in the loop
+                2nd. Creates a WildlifeList object based on that temp list
+                3rd. Uses that object to populate the SingleLogTest object
+                4th. Clears the list from the loop so next row won't have left over values
+                 */
+                List<WildLife> testList = new ArrayList<WildLife>(tempWildList);
+                WildLifeList wildLifeList = new WildLifeList(testList);
+                tempWildList.clear();
+                wildCursor.close();
+
+                // Does the same as wildlife but for equipment
+                // Once logID is found, it loops through the resulting equipment in the equipment_log_table
+                String queryStringEquipment = "SELECT A.LOG_ID, A.EQUIPMENT_ID, B.USER_ID, C.GEAR_TYPE, C.BRAND, C.MODEL, C.RENTED, C.PRICE FROM EQUIPMENT_LOG_TABLE A "
+                        + "JOIN DIVELOG_TABLE B ON A.LOG_ID = B.LOG_ID "
+                        + "JOIN EQUIPMENT_TABLE C ON A.EQUIPMENT_ID = C.EQUIPMENT_ID "
+                        + "WHERE A.LOG_ID = ?";
+                Cursor equipCursor = db.rawQuery(queryStringEquipment, new String[]{logID});
+                if (equipCursor.moveToFirst()) {
+                    do {
+                        Equipment equipment = new Equipment(equipCursor.getString(equipCursor.getColumnIndexOrThrow(USER_ID)), equipCursor.getInt(equipCursor.getColumnIndexOrThrow(COLUMN_EQUIPMENT_ID)), equipCursor.getString(equipCursor.getColumnIndexOrThrow(COLUMN_GEAR_TYPE)), equipCursor.getString(equipCursor.getColumnIndexOrThrow(COLUMN_BRAND)), equipCursor.getString(equipCursor.getColumnIndexOrThrow(COLUMN_MODEL)), equipCursor.getInt(equipCursor.getColumnIndexOrThrow(COLUMN_RENTED)) == 1 ? true: false, equipCursor.getDouble(equipCursor.getColumnIndexOrThrow(COLUMN_PRICE)));
+                        tempEquipList.add(equipment);
+                    } while (equipCursor.moveToNext());
+                }
+
+                List<Equipment> equipList = new ArrayList<Equipment>(tempEquipList);
+                EquipmentList equipmentList = new EquipmentList(equipList);
+                tempEquipList.clear();
+                equipCursor.close();
+
+                // Returns remainder of values
+                String userID = cursor.getString(1);
+                String date = cursor.getString(2);
+                String location = cursor.getString(3);
+                String siteName = cursor.getString(4);
+                int duration = cursor.getInt(5);
+                int maxDepth = cursor.getInt(6);
+                int avgDepth = cursor.getInt(7);
+                int temp = cursor.getInt(9);
+                int visibility = cursor.getInt(10);
+                int pressureStart = cursor.getInt(11);
+                int pressureEnd = cursor.getInt(12);
+                int airType = cursor.getInt(13);
+                //int weight = cursor.getInt(14);
+                int equipID = cursor.getInt(16);
+                String diveCond = cursor.getString(17);
+                String diveAct = cursor.getString(18);
+                int wildlifeID = cursor.getInt(19);
+                int partnerID = cursor.getInt(21);
+
+                // Get values from wildlife portion of the database
+                String wildlifeType = cursor.getString(24);
+                String wildlifeSpecies = cursor.getString(25);
+
+                // Get values for dive partner portion
+                String partnerName = cursor.getString(28);
+                String association = cursor.getString(29);
+                String partnerCertNum = cursor.getString(30);
+
+                // NOT NEEDED JUST HERE TO BE SAFE
+                // Get values for the equipment portion
+                String gearType = cursor.getString(33);
+                String brandMake = cursor.getString(34);
+                String model = cursor.getString(35);
+                boolean rent = cursor.getInt(36) == 1;
+                Double price = cursor.getDouble(37);
+
+                // Set all variable for single log
+                LocationDetails locationDetails = new LocationDetails(location, date, siteName);
+                DiveDetails diveDetails = new DiveDetails(duration, maxDepth, avgDepth, temp, visibility, pressureStart, pressureEnd, airType, diveCond, diveAct);
+                DivePartner divePartner = new DivePartner(userID, partnerID, partnerName, partnerCertNum,association);
+
+
+                // Set singlelog to be cycled thru
+                SingleLogTest newSingleLog = new SingleLogTest(locationDetails, diveDetails, divePartner, equipmentList, wildLifeList);
+                returnList.add(newSingleLog);
+
+
+            } while (cursor.moveToNext());
+        }
+        else {
+            // failure do not add anything
+        }
+        // close both the cursor and the db when done
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    // Original
     public List<SingleLog> getLogs() {
         List<SingleLog> returnList = new ArrayList<>();
 
@@ -397,7 +671,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 String gearType = cursor.getString(2);
                 String gearBrandMake = cursor.getString(3);
                 String gearModel = cursor.getString(4);
-                Boolean rented = cursor.getInt(5) == 1;
+                Boolean rented = (cursor.getInt(5) == 1);
                 Double price = cursor.getDouble(6);
 
                 Equipment newEquipment = new Equipment(userId, equipmentID, gearType, gearBrandMake, gearModel, rented, price);

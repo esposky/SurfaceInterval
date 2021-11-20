@@ -1,8 +1,9 @@
 package com.example.otherjavafiles;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class DiveDetails {
+public class DiveDetails implements Serializable {
     private int duration;
     private int maxDepth;
     private int avgDepth;

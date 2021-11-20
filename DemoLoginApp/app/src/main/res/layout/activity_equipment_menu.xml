@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".EquipmentMenu">
 
+    <Button
+        android:id="@+id/btnAddEquipment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Equipment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.946" />
+
     <TextView
         android:id="@+id/textViewEquipmentTitle"
         android:layout_width="wrap_content"
@@ -24,7 +36,8 @@
         android:layout_width="409dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddEquipment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEquipmentTitle" />

@@ -1,27 +1,30 @@
 package com.example.otherjavafiles;
 
+import android.media.audiofx.DynamicsProcessing;
+
+import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 
-public class EquipmentList {
-    private Equipment[] equipList;
+public class EquipmentList implements Serializable {
+    private List<Equipment> equipList;
 
-    public EquipmentList(Equipment[] equipList){
-        setEquipList(equipList);
-    }
-
-    public Equipment[] getEquipList() {
-        Equipment[] temp = new Equipment[equipList.length];
-        for(int i = 0; i < temp.length; i++)
-            temp[i] = equipList[i];
-        return temp;
-    }
-
-    public void setEquipList(Equipment[] equipList) {
+    public EquipmentList(List<Equipment> equipList) {
         this.equipList = equipList;
     }
 
-    public String toString() {
-        return "EquipmentList [getEquipList()=" + Arrays.toString(getEquipList()) + "]";
+    public List<Equipment> getEquipList() {
+        return equipList;
     }
 
+    public void setEquipList(List<Equipment> equipList) {
+        this.equipList = equipList;
+    }
+
+    @Override
+    public String toString() {
+        return "EquipmentList{" +
+                "equipList=" + equipList +
+                '}';
+    }
 }

@@ -14,11 +14,17 @@ import android.widget.Toast;
 
 import com.example.otherjavafiles.DatabaseHelper;
 import com.example.otherjavafiles.WildLife;
+import com.example.otherjavafiles.WildLifeList;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class WildlifeMenu extends AppCompatActivity {
     // Set preferences
     private static  final String MY_PREFS = "MyPrefsFile";
     private static WildLife wildLife;
+    private static WildLifeList wildLifeList;
+    //private static WildLifeList wildLifeList;
 
     ListView lvWildlife;
     ArrayAdapter customArrayAdapter;
@@ -26,6 +32,8 @@ public class WildlifeMenu extends AppCompatActivity {
     Button btnAddWildlife;
     SharedPreferences sharedPreferences;
     String userID;
+    //WildLife array[];
+    List<WildLife> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +46,8 @@ public class WildlifeMenu extends AppCompatActivity {
         sharedPreferences = this.getSharedPreferences(MY_PREFS, MODE_PRIVATE);
         userID = sharedPreferences.getString("userID", "Nothing");
         databaseHelper = new DatabaseHelper(WildlifeMenu.this);
+        list = new ArrayList<WildLife>();
+        wildLifeList = new WildLifeList(list);
 
         //List all wildlife inside of the list view
         showAllWildlife(databaseHelper);
@@ -47,7 +57,10 @@ public class WildlifeMenu extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 wildLife = (WildLife) parent.getItemAtPosition(position);
-                Toast.makeText(WildlifeMenu.this, wildLife.toString() + " was the selected wildlife.", Toast.LENGTH_SHORT).show();
+                // Add wildlife to list that was selected and add to list
+
+                list.add(wildLife);
+                Toast.makeText(WildlifeMenu.this, wildLife.toString() + " was added to the list.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -62,13 +75,22 @@ public class WildlifeMenu extends AppCompatActivity {
         });
     }
 
+    // Refresh the page once it has been returned
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showAllWildlife(databaseHelper);
+    }
+
 
     private void showAllWildlife(DatabaseHelper databaseHelper2) {
         customArrayAdapter = new ArrayAdapter<>(WildlifeMenu.this, android.R.layout.simple_expandable_list_item_1, databaseHelper2.getWildlife(userID));
         lvWildlife.setAdapter(customArrayAdapter);
     }
 
-    public static WildLife getData() {
-        return wildLife;
-    }
+    // DO the same to get data from list
+//    public static WildLife getData() {
+//        return wildLife;
+//    }
+    public static WildLifeList getData() {return wildLifeList;}
 }

@@ -1,13 +1,15 @@
 package com.example.otherjavafiles;
 
-public class Equipment {
+import java.io.Serializable;
+
+public class Equipment implements Serializable {
     private String userID;
     private int equipmentID;
     private String type;
     private String make;
     private String model;
-    private boolean rental = false;
-    private double price = 0;
+    private boolean rental;
+    private double price;
 
     //Constructor for owned equipment
     // public Equipment(String userID, int equipmentID, String ty, String ma, String mo){

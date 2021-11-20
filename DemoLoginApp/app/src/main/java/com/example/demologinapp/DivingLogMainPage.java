@@ -17,9 +17,6 @@ public class DivingLogMainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diving_log_main_page);
 
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
-
 
         divelog = (Button)findViewById(R.id.new_divelog);
         logbook = (Button)findViewById(R.id.log_book);
@@ -31,7 +28,6 @@ public class DivingLogMainPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),DivingLocation.class);
-                intent.putExtra("ID", userID);
                 startActivity(intent);
 
             }

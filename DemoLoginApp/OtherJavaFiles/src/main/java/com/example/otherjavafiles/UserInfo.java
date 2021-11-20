@@ -1,6 +1,8 @@
 package com.example.otherjavafiles;
 
-public class UserInfo {
+import java.io.Serializable;
+
+public class UserInfo implements Serializable {
     // Info for the user table
     private int userId;
     private String userName;

@@ -31,9 +31,9 @@ public class DivingBuddy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diving_buddy);
 
-        // Grabbing userID from previous page
-        Bundle bundle = getIntent().getExtras();
-        String userID = bundle.getString("ID");
+        // Grabbing userID from shared preferences
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
+        String userID = sharedPreferences.getString("userID", "0");
 
 
         name = (EditText)findViewById(R.id.divebuddyname_input);
