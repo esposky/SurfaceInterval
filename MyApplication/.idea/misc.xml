@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/edit_text_custom.xml" value="0.561025641025641" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/gradient_background.xml" value="0.561025641025641" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/ic_launcher_background.xml" value="0.561025641025641" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/drawable/registration_button.xml" value="0.561025641025641" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_equipment_check_list.xml" value="0.4322916666666667" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_equipment_or_get_previous.xml" value="0.4322916666666667" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_or_select_from_previous.xml" value="0.325" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_wild_life_check_list.xml" value="0.325" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_completed_new_dive_log.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_buddy.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_information1.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_location.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_log_main_page.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_logbook.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_equipment_information.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_equipment_menu.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_new_user_registration.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_other_diving_details.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_registration_complete_page.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_sign_out.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user_home_page.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user_login_screen.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_wild_life_details.xml" value="0.40625" />
+        <entry key="..\:/Users/Fiercewarriors/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_wildlife_menu.xml" value="0.40625" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_dive_buddy_or_select_from_previous.xml" value="0.1" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_equipment_check_list.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_equipment_or_get_previous.xml" value="0.1" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_or_select_from_previous.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_add_new_wild_life_check_list.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_completed_new_dive_log.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_buddy.xml" value="0.259963768115942" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_information1.xml" value="0.4004329004329004" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_location.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_log_main_page.xml" value="0.271286231884058" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_diving_logbook.xml" value="0.2890625" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_equipment_information.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_equipment_menu.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_log_book_add_new.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_new_user_registration.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_other_diving_details.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_previous_dive_buddies.xml" value="0.2658514492753623" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_registration_complete_page.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_saved_logs.xml" value="0.23229166666666667" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_sign_out.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_update_dive_log.xml" value="0.28177083333333336" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user_home_page.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_user_login_screen.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_wild_life_details.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/activity_wildlife_menu.xml" value="0.1897644927536232" />
+        <entry key="..\:/Users/James/AndroidStudioProjects/MyApplication/app/src/main/res/layout/recycler_view_layout.xml" value="0.2635416666666667" />
+        <entry key="..\:/Users/deand/AndroidStudioProjects/MyApplicationUpdated/MyApplication/app/src/main/res/layout/activity_diving_logbook.xml" value="0.1" />
+        <entry key="..\:/Users/deand/AndroidStudioProjects/MyApplicationUpdated/MyApplication/app/src/main/res/layout/activity_single_log.xml" value="0.1" />
+        <entry key="..\:/Users/deand/AndroidStudioProjects/MyApplicationUpdated/MyApplication/app/src/main/res/layout/activity_single_log_equipment_page.xml" value="0.1" />
+        <entry key="..\:/Users/deand/AndroidStudioProjects/MyApplicationUpdated/MyApplication/app/src/main/res/layout/activity_single_log_wildlife_page.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

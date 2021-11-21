@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">My Application</string>
+
+    <string name="surface">Surface</string>
+    <string name="Interval">Interval</string>
+    <string name="name">Username:</string>
+    <string name="email">Email:</string>
+    <string name="password">Password:</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="registration">Complete Registration</string>
+    <string name="title_registration">Register with Surface Interval</string>
+    <string name="title_welcome">Welcome!</string>
+    <string name="back_to_Login">Return to Login</string>
+    <string name="home_page">Welcome to your Profile homepage!</string>
+    <string name="registration_Completed">Congratulations! Your Registration is completed!</string>
+
+
+    <string name="location">Enter Dive Location:</string>
+    <string name="siteName">Enter Site Name:</string>
+    <string name="day">DD</string>
+    <string name="month">MM</string>
+    <string name="year">YYYY</string>
+    <string name="hours">HH</string>
+    <string name="minutes">mm</string>
+
+    <string name="enterDuration">Duration:</string>
+    <string name="enterMaxDepth">MaxDepth:</string>
+    <string name="enterAvgDepth">AvgDepth:</string>
+    <string name="enterTemp">Temp:</string>
+    <string name="enterVisibility">Visibility:</string>
+    <string name="enterPressureStart">PressureStart:</string>
+    <string name="enterPressureEnd">PressureEnd:</string>
+    <string name="enterPressureGroup">PressureGroup:</string>
+    <string name="airType">AirType:</string>
+    <string name="diveConditions">Dive Conditions:</string>
+    <string name="diveActivities">Dive Activities:</string>
+
+
+</resources>

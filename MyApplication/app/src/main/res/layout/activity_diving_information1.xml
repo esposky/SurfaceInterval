@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_background"
+        android:padding="40dp"
+        tools:context=".DivingInformation1">
+
+        <!--Title-->
+        <TextView
+            android:id="@+id/diving_details"
+            android:layout_width="289dp"
+            android:layout_height="43dp"
+            android:text="Diving Details"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.349"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Enter Duration-->
+        <TextView
+            android:id="@+id/enter_duration2"
+            android:layout_width="112dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="100dp"
+            android:ems="10"
+            android:text="1.Enter Duration"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/enter_duration"
+            android:layout_width="86dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="132dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Enter MaxDepth-->
+        <TextView
+            android:id="@+id/enter_max2"
+            android:layout_width="127dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="168dp"
+            android:text="2.Enter maxDepth"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/enter_max"
+            android:layout_width="89dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="192dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <!--Enter AvgDepth-->
+        <TextView
+            android:id="@+id/enter_avgDepth2"
+            android:layout_width="118dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="228dp"
+            android:text="3.Enter avgDepth"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/enter_avgDepth"
+            android:layout_width="89dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <!--Enter Temp-->
+        <TextView
+            android:id="@+id/enter_Temp2"
+            android:layout_width="95dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="296dp"
+            android:text="4.Enter Temp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <EditText
+            android:id="@+id/enter_Temp"
+            android:layout_width="85dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="316dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--Enter Visibility-->
+        <TextView
+            android:id="@+id/enter_visibility2"
+            android:layout_width="122dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="348dp"
+            android:text="5.Enter Visibility"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/enter_visibility"
+            android:layout_width="91dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="372dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+
+        <!--Enter PressureStart-->
+        <TextView
+            android:id="@+id/enter_pressureStart2"
+            android:layout_width="147dp"
+            android:layout_height="23dp"
+            android:layout_marginTop="404dp"
+            android:text="6.Enter PressureStart"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/enter_pressureStart"
+            android:layout_width="83dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="432dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--Enter PressureEnd-->
+        <TextView
+            android:id="@+id/enter_pressureEnd2"
+            android:layout_width="145dp"
+            android:layout_height="19dp"
+            android:layout_marginTop="464dp"
+            android:text="7.Enter PressureEnd"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/enter_pressureEnd"
+            android:layout_width="85dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="484dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=" "
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!-- Choose a Table Naui or Padi -->
+        <RelativeLayout
+            android:layout_width="177dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="84dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.934"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Radio Group 3 -->
+
+            <TextView
+                android:layout_width="188dp"
+                android:layout_height="30dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="0dp"
+                android:text="Choose Table"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+
+            <RadioGroup
+                android:id="@+id/radio_group3"
+                android:layout_width="162dp"
+                android:layout_height="37dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="4dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/naui_radioButton"
+                    android:layout_width="76dp"
+                    android:layout_height="35dp"
+                    android:text="Naui"
+                    android:textSize="15sp" />
+
+                <RadioButton
+                    android:id="@+id/padi_radioButton"
+                    android:layout_width="72dp"
+                    android:layout_height="36dp"
+                    android:text="Padi"
+                    android:textSize="15sp" />
+            </RadioGroup>
+        </RelativeLayout>
+
+        <!-- Radio Buttons for Air -->
+        <RelativeLayout
+            android:layout_width="156dp"
+            android:layout_height="123dp"
+            android:layout_marginTop="176dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- Radio Group 1 -->
+            <RadioGroup
+                android:id="@+id/radio_group1"
+                android:layout_width="match_parent"
+                android:layout_height="97dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginBottom="9dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.904"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <RadioButton
+                    android:id="@+id/airType_radioButton"
+                    android:layout_width="114dp"
+                    android:layout_height="37dp"
+                    android:text="AirType"
+                    android:textSize="15sp" />
+
+                <!-- Radio Group 2 -->
+                <RadioGroup
+                    android:id="@+id/radio_group2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/nitrox_radioButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Nitrox"
+                        android:textSize="15sp" />
+
+                    <EditText
+                        android:id="@+id/nitrox_percentage"
+                        android:layout_width="55dp"
+                        android:layout_height="wrap_content"
+                        android:hint=" % "
+                        android:textAlignment="textEnd" />
+                </RadioGroup>
+            </RadioGroup>
+            <TextView
+                android:id="@+id/airType_section"
+                android:layout_width="40dp"
+                android:layout_height="34dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="51dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginEnd="75dp"
+                android:gravity="center"
+                android:text="Air"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+
+        <!--Activity CheckBoxes-->
+        <TextView
+            android:id="@+id/activities_section"
+            android:layout_width="113dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="324dp"
+            android:text="Activities"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.802"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/recreation_activity"
+            android:layout_width="107dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="356dp"
+            android:text="Recreation"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.726"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/wreck_activity"
+            android:layout_width="76dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="388dp"
+            android:text="Wreck"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.641"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/reef_activity"
+            android:layout_width="69dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="428dp"
+            android:text="Reef"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.628"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/cave_activity"
+            android:layout_width="66dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="468dp"
+            android:text="Cave"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.623"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <CheckBox
+            android:id="@+id/search_and_recover_activity"
+            android:layout_width="142dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="508dp"
+            android:text="Search and Recover"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.866"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <!--Buttons-->
+        <TextView
+            android:id="@+id/diveSection_output"
+            android:layout_width="152dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="604dp"
+            android:text="Dive Section Output:"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.043"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/output"
+            android:layout_width="421dp"
+            android:layout_height="98dp"
+            android:layout_marginTop="636dp"
+            android:background="@drawable/edit_text_custom"
+            android:hint=""
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.967"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/continue_next"
+            android:layout_width="112dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="760dp"
+            android:text="continue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.987"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/back_to_locationDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="852dp"
+            android:text="back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/complete_divingDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="760dp"
+            android:text="Complete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
