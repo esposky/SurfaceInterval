@@ -272,14 +272,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_DIVE_CONDITIONS, singleLog.dive.getDiveConditionsNA());
         cv.put(COLUMN_DIVE_ACTIVITIES, singleLog.dive.getDiveActivitiesNA());
 
-//        // Put values for equipment
-//        for (Equipment equipment : equipList) {
-//            equipNums += equipment.getEquipmentID() + " ";
-//        }
-//        cv.put(COLUMN_EQUIPMENT_ID, equipNums);
-//
-//        //cv.put(COLUMN_WILDLIFE_ID, wildNums);
-
         // Put values for Dive Partner
         cv.put(COLUMN_DIVE_PARTNER, singleLog.buddy.getPartnerID());
 
@@ -770,6 +762,57 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String queryString = "SELECT * FROM WILDLIFE_TABLE WHERE USER_ID = " + userID;
 
         SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            // loop through results and create new singleLog objects
+            do {
+                int wildlifeID = cursor.getInt(0);
+                String userId = cursor.getString(1);
+                String type = cursor.getString(2);
+                String species = cursor.getString(3);
+
+                WildLife newWildLife = new WildLife(userId, wildlifeID, type, species);
+                returnList.add(newWildLife);
+
+            } while (cursor.moveToNext());
+        }
+        else {
+            // failure do not add anything
+        }
+        // close both the cursor and the db when done
+        cursor.close();
+        db.close();
+        return returnList;
+
+    }
+
+    // Gets the wildlife based off of the log id
+    public List<WildLife> getSingleWildlife(SingleLogTest singleLogTest) {
+        List<WildLife> returnList = new ArrayList<>();
+        // Query string to get specific log
+        String logString = "SELECT LOG_ID FROM DIVELOG_TABLE WHERE DIVE_PARTNER = " + singleLogTest.buddy.getPartnerID();
+
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor idCursor = db.rawQuery(logString, null);
+        int logID = 0;
+
+        // Get log id from the single log based on the partner ID
+        if (idCursor.moveToFirst()) {
+            do {
+                logID = idCursor.getInt(0);
+            } while (idCursor.moveToNext());
+        }
+        // Else do nothing
+        else {
+
+        }
+
+        // Use log id to get wildlife
+
+        String queryString = "SELECT * FROM WILDLIFE_TABLE A " +
+                "JOIN WILDLIFE_LOG_TABLE B ON A.WILDLIFE_ID = B.WILDLIFE_ID WHERE B.LOG_ID = " + logID; // Fixing this;
         Cursor cursor = db.rawQuery(queryString, null);
 
         if (cursor.moveToFirst()) {

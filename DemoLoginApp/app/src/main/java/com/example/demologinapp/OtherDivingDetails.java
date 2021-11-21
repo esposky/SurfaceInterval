@@ -63,6 +63,7 @@ public class OtherDivingDetails extends AppCompatActivity {
 
             }
         });
+
         //divebuddy button will lead to the divebuddy.class
         diveBuddy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,15 +73,11 @@ public class OtherDivingDetails extends AppCompatActivity {
             }
         });
 
-        //String finalWildlifeID = wildlifeID;
         complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Once button is clicked the completed information is stored in the database
-                // Commented out
-                //SingleLog singleLog = new SingleLog(DivingLocation.getData(),DivingInformation1.getData(),DivingBuddy.getData(),EquipmentInformation.getData(), (WildLifeList) WildlifeMenu.getData());
                 SingleLogTest singleLogTest = new SingleLogTest(DivingLocation.getData(),DivingInformation1.getData(),DivingBuddy.getData(), EquipmentMenu.getData(), WildlifeMenu.getData());
-                //try {
                     databaseHelper = new DatabaseHelper(OtherDivingDetails.this);
                     // Try test database add
                     Boolean insertLog = databaseHelper.addNewLogTest(singleLogTest, userID);
@@ -99,19 +96,6 @@ public class OtherDivingDetails extends AppCompatActivity {
                     else {
                         Toast.makeText(OtherDivingDetails.this, "Can't insert log", Toast.LENGTH_LONG).show();
                     }
-                    // Comment out adding to database for testing
-//                    Boolean insertLog = databaseHelper.addNewLog(singleLog, userID);
-//                    if (insertLog) {
-//                        Intent intent = new Intent(getApplicationContext(), CompletedNewDiveLog.class);
-//                        intent.putExtra("ID", userID);
-//                        startActivity(intent);
-//                    }
-//                    else {
-//                        Toast.makeText(OtherDivingDetails.this, "Can't insert log", Toast.LENGTH_LONG).show();
-//                    }
-                //} catch (Exception e) {
-                    //Toast.makeText(OtherDivingDetails.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                //}
             }
         });
 

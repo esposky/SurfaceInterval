@@ -32,7 +32,6 @@ public class WildlifeMenu extends AppCompatActivity {
     Button btnAddWildlife;
     SharedPreferences sharedPreferences;
     String userID;
-    //WildLife array[];
     List<WildLife> list;
 
     @Override

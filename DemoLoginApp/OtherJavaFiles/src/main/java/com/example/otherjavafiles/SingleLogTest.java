@@ -23,13 +23,7 @@ public class SingleLogTest implements Serializable {
 
     @Override
     public String toString() {
-        return "SingleLogTest{" +
-                "dive=" + dive +
-                ", buddy=" + buddy +
-                ", location=" + location +
-                ", equipmentList=" + equipmentList +
-                ", wildLifeList=" + wildLifeList +
-                '}';
+        return ""+ location.getDate() + " " + location.getLocation();
     }
 
     public DiveDetails getDive() {

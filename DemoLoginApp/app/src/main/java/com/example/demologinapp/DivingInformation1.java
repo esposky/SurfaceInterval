@@ -30,8 +30,6 @@ public class DivingInformation1 extends AppCompatActivity {
         setContentView(R.layout.activity_diving_information1);
 
         // Grabbing userID from previous page
-
-
         duration = (EditText) findViewById(R.id.enter_duration);
         maxDepth = (EditText) findViewById(R.id.enter_max);
         avgDepth = (EditText) findViewById(R.id.enter_avgDepth);

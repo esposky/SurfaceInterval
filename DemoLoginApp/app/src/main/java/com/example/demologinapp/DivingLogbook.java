@@ -13,8 +13,6 @@ import android.widget.Toast;
 import com.example.otherjavafiles.DatabaseHelper;
 import com.example.otherjavafiles.SingleLogTest;
 
-import java.util.ArrayList;
-
 public class DivingLogbook extends AppCompatActivity {
 
     private static SingleLogTest singleLogTest;
@@ -45,7 +43,7 @@ public class DivingLogbook extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 singleLogTest = (SingleLogTest) parent.getItemAtPosition(position);
-                Intent intent = new Intent(DivingLogbook.this, SingleLog.class);
+                Intent intent = new Intent(DivingLogbook.this, SingleLogPage.class);
                 intent.putExtra("singleLogObject", singleLogTest);
                 startActivity(intent);
             }

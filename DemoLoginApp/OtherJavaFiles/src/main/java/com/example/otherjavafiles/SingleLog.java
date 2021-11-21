@@ -9,23 +9,6 @@ public class SingleLog {
     Equipment equipment;
     WildLife wildLife;
 
-    //Constructor to create log object using broken down class definitions for easier readability,
-    //each object would be created in its own page in app
-//    public SingleLog(LocationDetails loc, DiveDetails dive, DivePartner buddy, EquipmentList equip, WildLifeList wildLifeList){
-//        setLocation(loc);
-//        setDive(dive);
-//        setBuddy(buddy);
-//        setEquip(equip);
-//        setWildlife(wildLifeList);
-//    }
-    // Using Equipment and Wildlife instead of list versions
-//    public void SingleLogTest(LocationDetails loc, DiveDetails dive, DivePartner buddy, Equipment equip, WildLifeList wildLife){
-//        setLocation(loc);
-//        setDive(dive);
-//        setBuddy(buddy);
-//        setEquipment(equip);
-//        setWildlife(wildLife);
-//    }
     public SingleLog(LocationDetails loc, DiveDetails dive, DivePartner buddy, Equipment equip, WildLife wildLife){
         setLocation(loc);
         setDive(dive);

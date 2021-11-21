@@ -51,11 +51,6 @@ public class WildLife implements Serializable {
 
     @Override
     public String toString() {
-        return "WildLife{" +
-                "userID='" + userID + '\'' +
-                ", wildlifeID=" + wildlifeID +
-                ", type='" + type + '\'' +
-                ", species='" + species + '\'' +
-                '}';
+        return "Type='" + type + ", Species = " + species;
     }
 }
